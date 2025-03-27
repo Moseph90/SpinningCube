@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include <cmath>
-#include <cstdio>
 #include <cstring>
 #include <chrono>
 #include <thread>
@@ -12,12 +11,11 @@ float A, B, C;
 float x, y, z;
 float ooz;
 int xp, yp;
-int idx;
+int indx;
 float K1{40};
 
 float cubeWidth{20};
 float zBuffer[WIDTH * HEIGHT];
-char tBuffer[WIDTH * HEIGHT];
 char buffer[WIDTH * HEIGHT];
 char backgroundASCIICode{' '};
 int distanceFromCamera{100};
@@ -47,15 +45,16 @@ void calculateForSurface(float cubeX, float cubeY, float cubeZ, int ch) {
 
     ooz = 1/z;
     
+    //Uncomment the line below and comment the line below that to move the cube to the left
     //xp = (int)(WIDTH/2 - 2 * cubeWidth + K1 * ooz * x * 2);
     xp = (int)(WIDTH/2 + K1 * ooz * x * 2);
     yp = (int)(HEIGHT/2 + K1 * ooz * y);
 
-    idx = xp + yp * WIDTH;
-    if (idx >= 0 && idx < WIDTH * HEIGHT) {
-        if (ooz > zBuffer[idx]) {
-            zBuffer[idx] = ooz;
-            buffer[idx] = ch;
+    indx = xp + yp * WIDTH;
+    if (indx >= 0 && indx < WIDTH * HEIGHT) {
+        if (ooz > zBuffer[indx]) {
+            zBuffer[indx] = ooz;
+            buffer[indx] = ch;
         }
     }
 }
