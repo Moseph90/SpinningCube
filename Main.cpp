@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include <cmath>
-#include <cstring>
 #include <chrono>
 #include <thread>
 
@@ -20,7 +19,7 @@ char buffer[WIDTH * HEIGHT];
 char backgroundASCIICode{' '};
 int distanceFromCamera{100};
 
-float incrementSpeed{1.5};
+float incrementSpeed{1};
 
 //This is how we calculate the X rotation matrix
 float calculateX(int i, int j, int k) {
@@ -60,7 +59,7 @@ void calculateForSurface(float cubeX, float cubeY, float cubeZ, int ch) {
 }
 
 void delay() {
-    std::this_thread::sleep_for(std::chrono::milliseconds(2));
+    std::this_thread::sleep_for(std::chrono::milliseconds(1));
 }
 
 int main () {
@@ -90,7 +89,7 @@ int main () {
         A += 0.005;
         B += 0.005;
 
-        delay();
+        //delay();
     }
     return 0;
 }
